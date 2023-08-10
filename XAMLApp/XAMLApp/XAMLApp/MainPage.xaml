@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XAMLApp.MainPage">
+
+    <StackLayout> <!-- Layout de itens empilhados -->
+        <Frame BackgroundColor="IndianRed" Padding="24" CornerRadius="0">
+            <Label Text="Welcome to Test Drive!" HorizontalTextAlignment="Center" TextColor="White" FontSize="Title"/>
+        </Frame>
+        <Label Text="Azera V6" FontSize="Medium" Padding="30,30,30,0"/>
+        <Label Text="Fiesta 2.0" FontSize="Medium" Padding="30,0,30,0"/>
+        <Label Text="HB20 S" FontSize="Medium" Padding="30,0,30,0"/>
+    </StackLayout>
+
+</ContentPage>
