@@ -7,24 +7,16 @@
         <Frame BackgroundColor="IndianRed" Padding="24" CornerRadius="0">
             <Label Text="Welcome to Test Drive!" HorizontalTextAlignment="Center" TextColor="White" FontSize="Title"/>
         </Frame>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Text="Fiesta 2.0" FontSize="Medium"/>
-            <Label Grid.Row="0" Grid.Column="1" Text="R$ 60.000" FontSize="Medium"/>
-            
-            <Label Grid.Row="1" Grid.Column="0" Text="Fiesta 2.0" FontSize="Medium"/>
-            <Label Grid.Row="1" Grid.Column="1" Text="R$ 50.000" FontSize="Medium"/>
-            
-            <Label Grid.Row="2" Grid.Column="0" Text="HB20 S" FontSize="Medium"/>
-            <Label Grid.Row="2" Grid.Column="1" Text="R$ 40.000" FontSize="Medium"/>
-        </Grid>
+        <ListView x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" >
+            <ListView.ItemTemplate Padding="30,30,30,0">
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Label Text="{Binding Nome}"></Label>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 </ContentPage>
