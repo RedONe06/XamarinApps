@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XAMLApp.Views.DetalhesView"
+             Title="{Binding Veiculo.Nome}">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="Esta é a página de detalhes"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand"></Label>
+            <Button x:Name="buttonProximo" 
+                Text="Próximo" 
+                Clicked="buttonProximo_Clicked"
+                VerticalOptions="End"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

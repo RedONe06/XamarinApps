@@ -10,7 +10,7 @@ namespace XAMLApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new XAMLApp.Views.ListagemView());
         }
 
         protected override void OnStart()

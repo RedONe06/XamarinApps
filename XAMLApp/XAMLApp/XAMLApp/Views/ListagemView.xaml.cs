@@ -7,18 +7,27 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace XAMLApp
+namespace XAMLApp.Views
 {
-    public class Veiculo { 
+    public class Veiculo
+    {
         public string Nome { get; set; }
         public decimal Preco { get; set; }
+        public string PrecoFormatado
+        {
+            get
+            {
+                return string.Format("R$ {0}", Preco);
+            }
+        }
+
     }
 
-    public partial class MainPage : ContentPage
+    public partial class ListagemView : ContentPage
     {
         public List<Veiculo> Veiculos { get; set; }
 
-        public MainPage()
+        public ListagemView()
         {
             InitializeComponent();
 
@@ -30,6 +39,13 @@ namespace XAMLApp
             };
 
             this.BindingContext = this;
+        }
+
+        private void listViewVeiculos_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var veiculo = (Veiculo)e.Item;
+
+            Navigation.PushAsync(new Views.DetalhesView(veiculo));
         }
     }
 }
