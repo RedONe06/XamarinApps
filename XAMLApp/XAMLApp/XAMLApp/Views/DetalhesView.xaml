@@ -4,11 +4,17 @@
              x:Class="XAMLApp.Views.DetalhesView"
              Title="{Binding Veiculo.Nome}">
     <ContentPage.Content>
-        <StackLayout>
-
-            <Label Text="Esta é a página de detalhes"
-               VerticalOptions="CenterAndExpand"
-               HorizontalOptions="CenterAndExpand"></Label>
+        <StackLayout Margin="30">
+            <TableView Intent="Settings">
+                <TableRoot>
+                    <TableSection Title="Acessórios">
+                        <SwitchCell Text="{Binding TextoFreioABS}" On="{Binding TemFreioABS, Mode=TwoWay}"></SwitchCell>
+                        <SwitchCell Text="{Binding TextoArCondicionado}" On="{Binding TemArCondicionado, Mode=TwoWay}"></SwitchCell>
+                        <SwitchCell Text="{Binding TextoMP3Player}" On="{Binding TemMP3Player, Mode=TwoWay}"></SwitchCell>
+                        <TextCell Text="{Binding ValorTotal}"></TextCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
             <Button x:Name="buttonProximo" 
                 Text="Próximo" 
                 Clicked="buttonProximo_Clicked"
