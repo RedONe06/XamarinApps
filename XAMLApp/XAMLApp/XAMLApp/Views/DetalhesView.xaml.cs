@@ -1,32 +1,27 @@
 ﻿using System;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XAMLApp.Models;
 
 namespace XAMLApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetalhesView : ContentPage
     {
-        private const int FREIO_ABS = 800;
-        private const int AR_CONDICIONADO = 1000;
-        private const int MP3_PLAYER = 500;
-
         public Veiculo Veiculo { get; set; }
         public string TextoFreioABS
         {
             get
             {
-                return string.Format("Freio ABS - R$ {0}", FREIO_ABS);
+                return string.Format("Freio ABS - R$ {0}", Veiculo.FREIO_ABS);
             }
         }
-        private bool temFreioABS;
         public bool TemFreioABS
         {
-            get { return temFreioABS; }
+            get { return Veiculo.TemFreioABS; }
             set
             {
-                temFreioABS = value;
+                Veiculo.TemFreioABS = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(ValorTotal));
             }
@@ -35,17 +30,16 @@ namespace XAMLApp.Views
         {
             get
             {
-                return string.Format("Ar Condicionado - R$ {0}", AR_CONDICIONADO);
+                return string.Format("Ar Condicionado - R$ {0}", Veiculo.AR_CONDICIONADO);
             }
         }
 
-        private bool temArCondicionado;
         public bool TemArCondicionado
         {
-            get { return temArCondicionado; }
+            get { return Veiculo.TemArCondicionado; }
             set
             {
-                temArCondicionado = value;
+                Veiculo.TemArCondicionado = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(ValorTotal));
             }
@@ -54,16 +48,15 @@ namespace XAMLApp.Views
         {
             get
             {
-                return string.Format("MP3 Player - R$ {0}", MP3_PLAYER);
+                return string.Format("MP3 Player - R$ {0}", Veiculo.MP3_PLAYER);
             }
         }
-        private bool temMP3Player;
         public bool TemMP3Player
         {
-            get { return temMP3Player; }
+            get { return Veiculo.TemMP3Player; }
             set
             {
-                temMP3Player = value;
+                Veiculo.TemMP3Player = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(ValorTotal));
             }
@@ -73,7 +66,7 @@ namespace XAMLApp.Views
         {
             get
             {
-                return string.Format("Valor total: R$ {0}", Veiculo.Preco + (TemFreioABS ? FREIO_ABS : 0) + (TemArCondicionado ? AR_CONDICIONADO : 0) + (TemMP3Player ? MP3_PLAYER : 0));
+                return Veiculo.PrecoTotalFormatado;
             }
         }
 
