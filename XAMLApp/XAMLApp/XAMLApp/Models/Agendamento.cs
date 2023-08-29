@@ -23,7 +23,6 @@ namespace XAMLApp.Models
                 dataAgendamento = value;
             }
         }
-
         public TimeSpan HoraAgendamento { get; set; }
     }
 }

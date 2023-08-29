@@ -2,13 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XAMLApp.Views.ListagemView"
+             xmlns:vm="clr-namespace:XAMLApp.ViewModels"
              Title="Test Drive">
-    <StackLayout>
+    <ContentPage.BindingContext>
+        <vm:ListagemViewModel></vm:ListagemViewModel>
+    </ContentPage.BindingContext>
+        <StackLayout>
         <!-- Layout de itens empilhados -->
         <Frame BackgroundColor="IndianRed" Padding="24" CornerRadius="0">
             <Label Text="Welcome to Test Drive!" HorizontalTextAlignment="Center" TextColor="White" FontSize="Title"/>
         </Frame>
-        <ListView Margin="30,30,30,0" x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" ItemTapped="listViewVeiculos_ItemTapped">
+        <ListView Margin="30,30,30,0" x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" SelectedItem="{Binding VeiculoSelecionado}">
             <ListView.ItemTemplate >
                 <DataTemplate >
                     <ViewCell >
