@@ -4,14 +4,12 @@
              x:Class="XAMLApp.Views.ListagemView"
              xmlns:vm="clr-namespace:XAMLApp.ViewModels"
              Title="Test Drive">
-    <ContentPage.BindingContext>
-        <vm:ListagemViewModel></vm:ListagemViewModel>
-    </ContentPage.BindingContext>
-        <StackLayout>
+    <StackLayout>
         <!-- Layout de itens empilhados -->
         <Frame BackgroundColor="IndianRed" Padding="24" CornerRadius="0">
             <Label Text="Welcome to Test Drive!" HorizontalTextAlignment="Center" TextColor="White" FontSize="Title"/>
         </Frame>
+        <ActivityIndicator IsRunning="{Binding Aguarde}" IsVisible="{Binding Aguarde}"></ActivityIndicator>
         <ListView Margin="30,30,30,0" x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" SelectedItem="{Binding VeiculoSelecionado}">
             <ListView.ItemTemplate >
                 <DataTemplate >

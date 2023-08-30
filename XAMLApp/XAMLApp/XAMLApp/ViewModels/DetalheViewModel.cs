@@ -8,7 +8,7 @@ using XAMLApp.Models;
 
 namespace XAMLApp.ViewModels
 {
-    public class DetalheViewModel : INotifyPropertyChanged
+    public class DetalheViewModel : BaseViewModel
     {
         public Veiculo Veiculo { get; set; }
         public string TextoFreioABS
@@ -74,12 +74,6 @@ namespace XAMLApp.ViewModels
         {
             this.Veiculo = veiculo;
             ProximoCommand = new Command(() => MessagingCenter.Send(Veiculo, "Proximo"));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
         public ICommand ProximoCommand { get; set; }
