@@ -5,7 +5,7 @@
 
 O projeto se trata de um **aplicativo multiplataforma** construído a partir do Visual Studio. O sistema é um aplicativo de **Teste Drive** onde é possível escolher um carro a partir de uma listagem, definir características que alteram o preço final e agendar um horário para utilizar o carro alugado. Utilizou-se as ferramentas do [Xamarin](https://learn.microsoft.com/pt-br/xamarin/get-started/what-is-xamarin) para a construção do serviço e teve como base o curso _"Xamarin parte 1: crie aplicativos mobile com Visual Studio"_ disponível pela Alura.
 
-### Sobre o curso
+## Sobre o curso
 
 - Instalação de ambiente Xamarin para Visual Studio;
 - Criação de páginas XAML em projeto com padrão MVVM (Model-View-ViewModel);
@@ -23,7 +23,7 @@ O projeto se trata de um **aplicativo multiplataforma** construído a partir do 
 
 O projeto agora respeita o padrão **MVVM (Model View ViewModel)** e para isso utilizou-se de comandos e troca de mensagens entre classes. A listagem agora é realizada a partir de uma chamada para uma **API REST** que aguarda com um _ActivityIndicator_ e a aplicação só permite a confirmação dos agendamentos caso os campos sejam preenchidos corretamente.
 
-### Sobre o curso
+## Sobre o curso
 
 - Ajuste da arquitetura: desacoplamento do code behind em camadas intermediárias de ViewModel;
 - Herança de classes para resgate de interfaces e métodos como OnPropertyChanged;
