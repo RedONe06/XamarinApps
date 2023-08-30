@@ -17,10 +17,5 @@ namespace XAMLApp.Views
         {
             InitializeComponent();
         }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            MessagingCenter.Send<Usuario>(new Usuario(), "SucessoLogin");
-        }
     }
 }
