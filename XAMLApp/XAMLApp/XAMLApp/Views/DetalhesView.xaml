@@ -18,7 +18,11 @@
             <Button x:Name="buttonProximo" 
                 Text="Próximo" 
                 Command="{Binding ProximoCommand}"
-                VerticalOptions="End"></Button>
+                VerticalOptions="End"
+                BackgroundColor="Blue"
+                TextColor="White"
+                CornerRadius="5">
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
