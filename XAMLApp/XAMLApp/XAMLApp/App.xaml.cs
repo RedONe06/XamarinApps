@@ -16,7 +16,8 @@ namespace XAMLApp
         {
             MessagingCenter.Subscribe<Usuario>(this, "SucessoLogin", (msg) =>
             {
-                MainPage = new NavigationPage(new ListagemView());
+                // MainPage = new NavigationPage(new ListagemView());
+                MainPage = new FlyoutPageView(msg);
             });
         }
 

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XAMLApp.Views.FlyoutView"
+             Title="Perfil">
+    <TabbedPage.Children>
+        <ContentPage Title="Usuário">
+            <StackLayout>
+                <Frame BorderColor="Silver" Margin="15" VerticalOptions="StartAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout Margin="5,5,10,0">
+                            <Label Text="{Binding Nome}" FontSize="Small" FontAttributes="Bold" TextColor="#FF007ACC"/>
+                            <Label Text="{Binding Email}" FontSize="Caption"/>
+                        </StackLayout>
+                        <Button BackgroundColor="#FF007ACC" TextColor="White" Text="Perfil" CornerRadius="5" Command="{Binding EditarPerfilCommand}"></Button>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout Margin="5">
+                        <Label Text="Developed by @RedONe06" FontSize="Micro" FontAttributes="Italic"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ContentPage>
+        <ContentPage Title="Editar">
+
+        </ContentPage>
+    </TabbedPage.Children>
+</TabbedPage>

@@ -21,20 +21,24 @@ namespace XAMLApp.Services
                             await cliente.PostAsync("/login", camposFormulario);
                             };
                             */
+
             if (login.Password.Equals("Andriele@123") && login.Email.Equals("andriele@gmail.com"))
             {
                 Usuario usuario = new Usuario()
                 {
-                    User = "Andriele Joras dos Santos",
-                    Password = login.Password
+                    User = "Andriele",
+                    Password = login.Password,
+                    Email = login.Email,
+                    Nome = "Andriele Joras dos Santos"
                 };
-
                 MessagingCenter.Send<Usuario>(usuario, "SucessoLogin");
             }
             else
             {
                 MessagingCenter.Send<LoginException>(new LoginException("Usuário ou senha incorretos."), "FalhaLogin");
             }
+
+
         }
     }
 }
