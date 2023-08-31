@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Mail;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XAMLApp.Models;
+using XAMLApp.Services;
 
 namespace XAMLApp.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        private string usuario;
+        private LoginService _loginService;
+        private string email;
 
-        public string Usuario
+        public string Email
         {
-            get { return usuario; }
+            get { return email; }
             set
             {
-                usuario = value;
+                email = value;
+                OnPropertyChanged();
                 ((Command)EntrarCommand).ChangeCanExecute();
             }
         }
@@ -28,20 +32,22 @@ namespace XAMLApp.ViewModels
             set
             {
                 password = value;
+                OnPropertyChanged();
                 ((Command)EntrarCommand).ChangeCanExecute();
             }
         }
 
-        ICommand EntrarCommand { get; set; }
+        public ICommand EntrarCommand { get; set; }
 
         public LoginViewModel()
         {
             EntrarCommand = new Command(() =>
             {
-                MessagingCenter.Send<Usuario>(new Usuario(), "SucessoLogin");
+                var loginService = new LoginService();
+                loginService.FazerLogin(new Login(email, password));
             }, () =>
             {
-                return !string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(password);
+                return !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password);
             });
         }
     }

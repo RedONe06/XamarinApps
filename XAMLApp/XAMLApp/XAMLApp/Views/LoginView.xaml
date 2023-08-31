@@ -10,7 +10,7 @@
         <StackLayout VerticalOptions="Center" Margin="55">
             <Image Source="aluracar.png"></Image>
             <Label Text="LOGIN" FontSize="Medium" Margin="2,30,0,0" FontAttributes="Bold"></Label>
-            <Entry Placeholder="Usuário" Text="{Binding Usuario}"></Entry>
+            <Entry Placeholder="Email" Text="{Binding Email}" Keyboard="Email"></Entry>
             <Entry Placeholder="Senha" Text="{Binding Password}" IsPassword="True"></Entry>
             <Button Text="Entrar" Command="{Binding EntrarCommand}" BackgroundColor="Blue" TextColor="White" CornerRadius="5"></Button>
         </StackLayout>
