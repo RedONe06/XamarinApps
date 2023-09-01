@@ -45,6 +45,14 @@ namespace XAMLApp.ViewModels
             }
         }
 
+        private ImageSource _fotoPerfil = "perfil.png";
+
+        public ImageSource FotoPerfil
+        {
+            get { return _fotoPerfil; }
+            private set { _fotoPerfil = value; }
+        }
+
         private readonly Usuario _usuario;
 
         public ICommand EditarPerfilCommand { get; private set; }

@@ -13,14 +13,17 @@
         <ContentPage Title="Usuário">
             <StackLayout>
                 <Frame BorderColor="Silver" Margin="15" VerticalOptions="StartAndExpand">
-                    <StackLayout Orientation="Horizontal">
-                        <StackLayout Margin="5,5,10,0">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                        <Image Source="{Binding FotoPerfil}"></Image>
+                        <StackLayout VerticalOptions="Center" Margin="20,0,0,0">
                             <Label Text="{Binding Nome}" FontSize="Small" FontAttributes="Bold" TextColor="#FF007ACC"/>
                             <Label Text="{Binding Email}" FontSize="Caption"/>
                         </StackLayout>
-                        <Button BackgroundColor="#FF007ACC" TextColor="White" Text="Perfil" CornerRadius="5" Command="{Binding EditarPerfilCommand}"></Button>
                     </StackLayout>
                 </Frame>
+                <StackLayout Margin="15">
+                    <Button BackgroundColor="#FF007ACC" TextColor="White" Text="Perfil" CornerRadius="5" Command="{Binding EditarPerfilCommand}"></Button>
+                </StackLayout>
                 <Frame>
                     <StackLayout Margin="5">
                         <Label Text="Developed by @RedONe06" FontSize="Micro" FontAttributes="Italic"/>
@@ -29,18 +32,21 @@
             </StackLayout>
         </ContentPage>
         <ContentPage Title="Editar">
-            <StackLayout>
+            <StackLayout> 
                 <Frame BorderColor="Silver" Margin="15" VerticalOptions="StartAndExpand">
-                    <TableView>
-                        <TableRoot>
-                            <TableSection Title="Dados pessoais">
-                                <EntryCell Label="Nome" Text="{Binding Nome}" IsEnabled="{Binding Editando}"></EntryCell>
-                                <EntryCell Label="Data de nascimento" Text="{Binding DataNascimento}" IsEnabled="{Binding Editando}"></EntryCell>
-                                <EntryCell Keyboard="Telephone" Label="Telefone" Text="{Binding Telefone}" IsEnabled="{Binding Editando}"></EntryCell>
-                                <EntryCell Keyboard="Email" Label="Email" Text="{Binding Email}" IsEnabled="{Binding Editando}"></EntryCell>
-                            </TableSection>
-                        </TableRoot>
-                    </TableView>
+                    <StackLayout>
+                        <Image Source="{Binding FotoPerfil}" Margin="20"></Image>
+                        <TableView>
+                            <TableRoot>
+                                <TableSection Title="Dados pessoais">
+                                    <EntryCell Label="Nome" Text="{Binding Nome}" IsEnabled="{Binding Editando}"></EntryCell>
+                                    <EntryCell Label="Data de nascimento" Text="{Binding DataNascimento}" IsEnabled="{Binding Editando}"></EntryCell>
+                                    <EntryCell Keyboard="Telephone" Label="Telefone" Text="{Binding Telefone}" IsEnabled="{Binding Editando}"></EntryCell>
+                                    <EntryCell Keyboard="Email" Label="Email" Text="{Binding Email}" IsEnabled="{Binding Editando}"></EntryCell>
+                                </TableSection>
+                            </TableRoot>
+                        </TableView>
+                    </StackLayout>
                 </Frame>
                 <Frame>
                     <StackLayout>
