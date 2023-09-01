@@ -28,7 +28,7 @@
                     </TableSection>
                 </TableRoot>
             </TableView>
-            <Button Text="Agendar" Command="{Binding AgendarCommand}"></Button>
+            <Button Text="Agendar" Command="{Binding AgendarCommand}" CornerRadius="5"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -5,20 +5,15 @@
              xmlns:vm="clr-namespace:XAMLApp.ViewModels"
              Title="Test Drive">
     <StackLayout>
-        <!-- Layout de itens empilhados -->
-        <Frame BackgroundColor="IndianRed" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Test Drive!" HorizontalTextAlignment="Center" TextColor="White" FontSize="Title"/>
-        </Frame>
-        <ActivityIndicator IsRunning="{Binding Aguarde}" IsVisible="{Binding Aguarde}"></ActivityIndicator>
-        <ListView Margin="30,30,30,0" x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" SelectedItem="{Binding VeiculoSelecionado}">
+        <ActivityIndicator IsRunning="{Binding Aguarde}" IsVisible="{Binding Aguarde}" Color="Blue" Margin="60"></ActivityIndicator>
+        <ListView Margin="30,30,30,0" x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" SelectedItem="{Binding VeiculoSelecionado}" >
             <ListView.ItemTemplate >
                 <DataTemplate >
-                    <ViewCell >
+                    <ViewCell>
                         <ViewCell.View>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Nome}" FontSize="20" VerticalTextAlignment="Center"></Label>
-                                <Label Text=" - " VerticalTextAlignment="Center"></Label>
-                                <Label Text="{Binding PrecoFormatado}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <Label Text="{Binding Nome}" FontSize="20" VerticalTextAlignment="Center" HorizontalOptions="Start"></Label>
+                                <Label Text="{Binding PrecoFormatado}" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>
