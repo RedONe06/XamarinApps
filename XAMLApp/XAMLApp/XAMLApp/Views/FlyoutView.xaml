@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:converters="clr-namespace:XAMLApp.Converters"
              x:Class="XAMLApp.Views.FlyoutView"
              Title="Perfil">
+    <TabbedPage.Resources>
+        <ResourceDictionary>
+            <converters:NegativoConverter x:Key="negativo"></converters:NegativoConverter>
+        </ResourceDictionary>
+    </TabbedPage.Resources>
     <TabbedPage.Children>
         <ContentPage Title="Usuário">
             <StackLayout>
@@ -23,7 +29,27 @@
             </StackLayout>
         </ContentPage>
         <ContentPage Title="Editar">
+            <StackLayout>
+                <Frame BorderColor="Silver" Margin="15" VerticalOptions="StartAndExpand">
+                    <TableView>
+                        <TableRoot>
+                            <TableSection Title="Dados pessoais">
+                                <EntryCell Label="Nome" Text="{Binding Nome}" IsEnabled="{Binding Editando}"></EntryCell>
+                                <EntryCell Label="Data de nascimento" Text="{Binding DataNascimento}" IsEnabled="{Binding Editando}"></EntryCell>
+                                <EntryCell Keyboard="Telephone" Label="Telefone" Text="{Binding Telefone}" IsEnabled="{Binding Editando}"></EntryCell>
+                                <EntryCell Keyboard="Email" Label="Email" Text="{Binding Email}" IsEnabled="{Binding Editando}"></EntryCell>
+                            </TableSection>
+                        </TableRoot>
+                    </TableView>
+                </Frame>
+                <Frame>
+                    <StackLayout>
+                        <Button Text="Editar" Command="{Binding EditarCommand}" IsVisible="{Binding Editando, Converter={StaticResource Key=negativo}}"></Button>
+                        <Button Text="Salvar" Command="{Binding SalvarCommand}" IsVisible="{Binding Editando}"></Button>
+                    </StackLayout>
+                </Frame>
 
+            </StackLayout>
         </ContentPage>
     </TabbedPage.Children>
 </TabbedPage>
