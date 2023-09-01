@@ -31,3 +31,20 @@ O projeto agora respeita o padrão **MVVM (Model View ViewModel)** e para isso u
 - Utilização de ações realiazadas por _Command_ e não pelos eventos de _Clicked_;
 - Conexão da lista de veículos a um servidor externo de Fipe através de um serviço HTTP GET;
 - Utilização de novos conceitos como: _ContentPage.BindingContext_, _SelectedItem_, _OnAppearing_ e _OnDisappearing_, _Subscribe_ e _Unsubscribe_, _MessagingCenter_, _Command_ e _ICommand_, HTTP GET  e _StringAsync_, _DisplayAlert_ com 2 condições, _ChangeCanExecute()_, _ActivityIndicator_, etc.
+  
+![Xamarin3](https://github.com/RedONe06/XamarinApps/assets/98191980/82c0d12b-4c41-4fd7-a279-c3a96c69ac31)
+<img src="https://img.shields.io/static/v1?label=by&message=Alura&color=blue&style=for-the-badge"> <img src="https://img.shields.io/static/v1?label=Tech&message=.NET 2.0&color=green&style=for-the-badge&logo=.NET"> <img src="https://img.shields.io/static/v1?label=Tech&message=C%23&color=green&style=for-the-badge&logo=csharp"> <img src="https://img.shields.io/static/v1?label=Tech&message=Xamarin&color=green&style=for-the-badge&logo=xamarin">
+
+# Xamarin parte 3: Crie aplicativos mobile com Visual Studio
+## Descrição do sistema
+
+Ente as atualizações no projeto estão: tela de login com todas as propriedades e excessões da interface e um menu lateral com as informações do perfil e abas de edição. Além da estilização do projeto.
+
+## Sobre o curso
+
+- Implementação da tela de login com imagem e campos de texto com definições corretas para teclado e excessões.
+- Implementação de um menu lateral _FlyoutPage_ com abas por _TabbedPage_ mostrando os dados do usuário que fez login e permitindo editar por dois botões.
+- Habilitar e desabilitar campos por meio de Conversor
+- Utilização de conceitos como: _Converter_ e _IValueConverter_, navegação entre abas por _CurrentPage()_, tratamento de excessões por _DisplayAlert_, etc.
+
+
