@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using XAMLApp.Media;
 using XAMLApp.Models;
 
 namespace XAMLApp.ViewModels
@@ -50,7 +53,11 @@ namespace XAMLApp.ViewModels
         public ImageSource FotoPerfil
         {
             get { return _fotoPerfil; }
-            private set { _fotoPerfil = value; }
+            private set
+            {
+                _fotoPerfil = value;
+                OnPropertyChanged();
+            }
         }
 
         private readonly Usuario _usuario;
@@ -59,6 +66,7 @@ namespace XAMLApp.ViewModels
         public ICommand EditarCommand { get; private set; }
 
         public ICommand SalvarCommand { get; private set; }
+        public ICommand TirarFotoCommand { get; private set; }
 
         public FlyoutViewModel(Usuario usuario)
         {
@@ -82,6 +90,16 @@ namespace XAMLApp.ViewModels
             EditarCommand = new Command(() =>
             {
                 this.Editando = true;
+            });
+
+            TirarFotoCommand = new Command(() =>
+            {
+                DependencyService.Get<ICamera>().TirarFoto();
+            });
+
+            MessagingCenter.Subscribe<byte[]>(this, "FotoTirada", (msg) =>
+            {
+                FotoPerfil = ImageSource.FromStream(() => new MemoryStream(msg));
             });
         }
     }
