@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using XAMLApp.Data;
 using XAMLApp.Models;
 
 namespace XAMLApp.ViewModels
@@ -34,7 +35,7 @@ namespace XAMLApp.ViewModels
         {
             get => Agendamento.Email; set
             {
-                Agendamento.Email = value; 
+                Agendamento.Email = value;
                 OnPropertyChanged();
                 ((Command)AgendarCommand).ChangeCanExecute();
             }
@@ -48,6 +49,7 @@ namespace XAMLApp.ViewModels
             Agendamento.Veiculo = veiculo;
             AgendarCommand = new Command(() =>
             {
+                SalvarAgendamento();
                 MessagingCenter.Send<Agendamento>(this.Agendamento, "Agendamento");
             }, () =>
             {
@@ -56,6 +58,14 @@ namespace XAMLApp.ViewModels
         }
 
         public ICommand AgendarCommand { get; set; }
+
+        public void SalvarAgendamento()
+        {
+            using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
+            {
+                var x = this.Agendamento;
+            };
+        }
 
 
     }
