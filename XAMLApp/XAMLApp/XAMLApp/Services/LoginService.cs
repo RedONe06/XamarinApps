@@ -29,7 +29,9 @@ namespace XAMLApp.Services
                     User = "Andriele",
                     Password = login.Password,
                     Email = login.Email,
-                    Nome = "Andriele Joras dos Santos"
+                    Nome = "Andriele Joras dos Santos",
+                    Telefone = "(51) 98591-3587",
+                    DataNascimento = "06/05/2004"
                 };
                 MessagingCenter.Send<Usuario>(usuario, "SucessoLogin");
             }

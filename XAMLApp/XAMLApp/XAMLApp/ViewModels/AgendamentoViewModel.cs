@@ -11,7 +11,26 @@ namespace XAMLApp.ViewModels
     public class AgendamentoViewModel : BaseViewModel
     {
         public Agendamento Agendamento { get; set; }
-        public Veiculo Veiculo { get => Agendamento.Veiculo; set => Agendamento.Veiculo = value; }
+        public string Modelo
+        {
+            get => Agendamento.Modelo; set
+            {
+                Agendamento.Modelo = value;
+                OnPropertyChanged();
+                ((Command)AgendarCommand).ChangeCanExecute();
+            }
+        }
+
+        public decimal Preco
+        {
+            get => Agendamento.Preco; set
+            {
+                Agendamento.Preco = value;
+                OnPropertyChanged();
+                ((Command)AgendarCommand).ChangeCanExecute();
+            }
+        }
+
         public string Nome
         {
             get => Agendamento.Nome; set
@@ -43,10 +62,9 @@ namespace XAMLApp.ViewModels
         public DateTime DataAgendamento { get => Agendamento.DataAgendamento; set => Agendamento.DataAgendamento = value; }
         public TimeSpan HoraAgendamento { get => Agendamento.HoraAgendamento; set => Agendamento.HoraAgendamento = value; }
 
-        public AgendamentoViewModel(Veiculo veiculo)
+        public AgendamentoViewModel(Veiculo veiculo, Usuario usuario)
         {
-            this.Agendamento = new Agendamento();
-            Agendamento.Veiculo = veiculo;
+            this.Agendamento = new Agendamento(usuario.Nome, usuario.Telefone, usuario.Email, veiculo.Nome, veiculo.Preco);
             AgendarCommand = new Command(() =>
             {
                 SalvarAgendamento();
@@ -64,11 +82,8 @@ namespace XAMLApp.ViewModels
             using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
             {
                 AgendamentoDAO dao = new AgendamentoDAO(conexao);
-                dao.Salvar(this.Agendamento);
-                var x = this.Agendamento;
+                dao.Salvar(new Agendamento(Nome, Telefone, Email, Modelo, Preco));
             };
         }
-
-
     }
 }

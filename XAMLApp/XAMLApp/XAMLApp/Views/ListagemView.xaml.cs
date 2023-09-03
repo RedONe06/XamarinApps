@@ -8,9 +8,11 @@ namespace XAMLApp.Views
     public partial class ListagemView : ContentPage
     {
         public ListagemViewModel ViewModel { get; set; }
-        public ListagemView()
+        public Usuario Usuario { get; set; }
+        public ListagemView(Usuario usuario)
         {
             InitializeComponent();
+            this.Usuario = usuario;
             this.ViewModel = new ListagemViewModel();
             this.BindingContext = this.ViewModel;
         }
@@ -20,7 +22,7 @@ namespace XAMLApp.Views
             base.OnAppearing();
             MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado", (msg) =>
             {
-                Navigation.PushAsync(new DetalhesView(msg));
+                Navigation.PushAsync(new DetalhesView(msg, Usuario));
             });
             this.ViewModel.GetVeiculos();
         }

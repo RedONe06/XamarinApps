@@ -19,6 +19,7 @@ namespace XAMLApp.Views
             InitializeComponent();
             this._usuario = usuario;
             this.Flyout = new FlyoutView(usuario);
+            this.Detail = new NavigationPage(new ListagemView(usuario));
         }
     }
 }

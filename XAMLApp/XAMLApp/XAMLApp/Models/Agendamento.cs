@@ -7,7 +7,6 @@ namespace XAMLApp.Models
 {
     public class Agendamento
     {
-        public Veiculo Veiculo { get; set; }
         public string Nome { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
@@ -28,5 +27,13 @@ namespace XAMLApp.Models
         }
         public TimeSpan HoraAgendamento { get; set; }
 
+        public Agendamento(string nome, string telefone, string email, string modelo, decimal preco)
+        {
+            Nome = nome;
+            Telefone = telefone;
+            Email = email;
+            Modelo = modelo;
+            Preco = preco;
+        }
     }
 }

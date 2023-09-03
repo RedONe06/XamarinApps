@@ -17,7 +17,7 @@ namespace XAMLApp.Data
 
         public void Salvar(Agendamento agendamento)
         {
-
+            _conexao.Insert(agendamento);
         }
     }
 }
