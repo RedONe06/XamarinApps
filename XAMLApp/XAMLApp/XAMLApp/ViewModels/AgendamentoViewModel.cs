@@ -63,6 +63,8 @@ namespace XAMLApp.ViewModels
         {
             using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
             {
+                AgendamentoDAO dao = new AgendamentoDAO(conexao);
+                dao.Salvar(this.Agendamento);
                 var x = this.Agendamento;
             };
         }

@@ -28,5 +28,6 @@ namespace XAMLApp
         protected override void OnResume()
         {
         }
+        
     }
 }

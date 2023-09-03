@@ -7,6 +7,7 @@ using Android.Widget;
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using XAMLApp.Data;
@@ -17,9 +18,12 @@ namespace XAMLApp.Droid
 {
     public class SQLite_android : ISQLite
     {
+        private const string NOMEARQUIVODB = "Agendamento.db3";
+
         public SQLiteConnection PegarConexao()
         {
-            return new SQLite.SQLiteConnection("Agendamento.db3");
+            var caminhoDB = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.Path, NOMEARQUIVODB);
+            return new SQLite.SQLiteConnection(caminhoDB);
         }
     }
 }
