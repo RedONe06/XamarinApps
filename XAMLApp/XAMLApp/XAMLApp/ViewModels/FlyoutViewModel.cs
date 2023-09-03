@@ -67,11 +67,21 @@ namespace XAMLApp.ViewModels
 
         public ICommand SalvarCommand { get; private set; }
         public ICommand TirarFotoCommand { get; private set; }
+        public ICommand MeusAgendamentosCommand { get; private set; }
 
         public FlyoutViewModel(Usuario usuario)
         {
             this._usuario = usuario;
             DefinirComandos(usuario);
+            AssinarMensagens();
+        }
+
+        private void AssinarMensagens()
+        {
+            MessagingCenter.Subscribe<byte[]>(this, "FotoTirada", (msg) =>
+            {
+                FotoPerfil = ImageSource.FromStream(() => new MemoryStream(msg));
+            });
         }
 
         private void DefinirComandos(Usuario usuario)
@@ -97,9 +107,9 @@ namespace XAMLApp.ViewModels
                 DependencyService.Get<ICamera>().TirarFoto();
             });
 
-            MessagingCenter.Subscribe<byte[]>(this, "FotoTirada", (msg) =>
+            MeusAgendamentosCommand = new Command(() =>
             {
-                FotoPerfil = ImageSource.FromStream(() => new MemoryStream(msg));
+                MessagingCenter.Send<Usuario>(usuario, "MeusAgendamentos");
             });
         }
     }

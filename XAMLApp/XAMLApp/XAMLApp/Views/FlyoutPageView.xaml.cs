@@ -21,5 +21,15 @@ namespace XAMLApp.Views
             this.Flyout = new FlyoutView(usuario);
             this.Detail = new NavigationPage(new ListagemView(usuario));
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Usuario>(this, "MeusAgendamentos", (msg) =>
+            {
+                this.Detail = new AgendamentosUsuarioView();
+                this.IsPresented = false;
+            });
+        }
     }
 }

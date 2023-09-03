@@ -21,6 +21,11 @@ namespace XAMLApp.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            AssinarMensagens();
+        }
+
+        private void AssinarMensagens()
+        {
             MessagingCenter.Subscribe<Agendamento>(this, "Agendamento", async (msg) =>
             {
                 var confirma = await DisplayAlert("Salvar agendamento?", "Deseja mesmo confirmar o agendamento?", "Sim", "Não");
@@ -29,6 +34,7 @@ namespace XAMLApp.Views
                 {
                     await DisplayAlert("Agendamento",
                 string.Format("Nome: {0}\nFone: {1}\nE-mail: {2}\nVeículo: {3}\nData Agendamento: {4}\nHora Agendamento: {5}", msg.Nome, msg.Telefone, msg.Email, msg.Modelo, msg.DataAgendamento.ToString("dd/MM/yyyy"), msg.HoraAgendamento.ToString()), "Ok");
+                    await Navigation.PopToRootAsync();
                 }
             });
         }
