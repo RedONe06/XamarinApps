@@ -68,6 +68,8 @@ namespace XAMLApp.ViewModels
         public ICommand SalvarCommand { get; private set; }
         public ICommand TirarFotoCommand { get; private set; }
         public ICommand MeusAgendamentosCommand { get; private set; }
+        public ICommand NovoAgendamentoCommand { get; private set; }
+
 
         public FlyoutViewModel(Usuario usuario)
         {
@@ -110,6 +112,11 @@ namespace XAMLApp.ViewModels
             MeusAgendamentosCommand = new Command(() =>
             {
                 MessagingCenter.Send<Usuario>(usuario, "MeusAgendamentos");
+            });
+
+            NovoAgendamentoCommand = new Command(() =>
+            {
+                MessagingCenter.Send<Usuario>(usuario, "NovoAgendamento");
             });
         }
     }

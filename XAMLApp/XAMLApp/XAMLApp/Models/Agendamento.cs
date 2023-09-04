@@ -29,6 +29,19 @@ namespace XAMLApp.Models
             }
         }
         public TimeSpan HoraAgendamento { get; set; }
+        public string DataFormatada
+        {
+            get
+            {
+                return DataAgendamento.Add(HoraAgendamento).ToString("dd/MM/yyyy HH:mm");
+            }
+        }
+
+        public Agendamento(string nome, string telefone, string email, string modelo, decimal preco, DateTime dataAgendamento, TimeSpan horaAgendamento) : this(nome, telefone, email, modelo, preco)
+        {
+            DataAgendamento = dataAgendamento;
+            HoraAgendamento = horaAgendamento;
+        }
 
         public Agendamento(string nome, string telefone, string email, string modelo, decimal preco)
         {
@@ -37,6 +50,11 @@ namespace XAMLApp.Models
             Email = email;
             Modelo = modelo;
             Preco = preco;
+        }
+
+        public Agendamento()
+        {
+                
         }
     }
 }

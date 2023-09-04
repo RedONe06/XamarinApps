@@ -24,6 +24,7 @@
                 <StackLayout Margin="15">
                     <Button BackgroundColor="#FF007ACC" TextColor="White" Text="Perfil" CornerRadius="5" Command="{Binding EditarPerfilCommand}"></Button>
                     <Button BackgroundColor="#FF007ACC" TextColor="White" Text="Meus Agendamentos" CornerRadius="5" Command="{Binding MeusAgendamentosCommand}"></Button>
+                    <Button BackgroundColor="#FF007ACC" TextColor="White" Text="Novo Agendamento" CornerRadius="5" Command="{Binding NovoAgendamentoCommand}"></Button>
                 </StackLayout>
                 <Frame>
                     <StackLayout Margin="5">

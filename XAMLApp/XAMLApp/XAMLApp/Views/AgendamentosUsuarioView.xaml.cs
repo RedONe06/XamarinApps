@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XAMLApp.Models;
+using XAMLApp.ViewModels;
 
 namespace XAMLApp.Views
 {
@@ -15,6 +17,7 @@ namespace XAMLApp.Views
         public AgendamentosUsuarioView()
         {
             InitializeComponent();
+            this.BindingContext = new AgendamentosUsuarioViewModel();
         }
     }
 }

@@ -25,9 +25,33 @@ namespace XAMLApp.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            AssinarMensagens();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            CancelarAssinatura();
+        }
+
+        private void CancelarAssinatura()
+        {
+            MessagingCenter.Unsubscribe<Usuario>(this, "MeusAgendamentos");
+
+            MessagingCenter.Unsubscribe<Usuario>(this, "NovoAgendamento");
+        }
+
+        private void AssinarMensagens()
+        {
             MessagingCenter.Subscribe<Usuario>(this, "MeusAgendamentos", (msg) =>
             {
-                this.Detail = new AgendamentosUsuarioView();
+                this.Detail = new NavigationPage(new AgendamentosUsuarioView());
+                this.IsPresented = false;
+            });
+
+            MessagingCenter.Subscribe<Usuario>(this, "NovoAgendamento", (msg) =>
+            {
+                this.Detail = new NavigationPage(new ListagemView(msg));
                 this.IsPresented = false;
             });
         }
