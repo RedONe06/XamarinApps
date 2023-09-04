@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XAMLApp.Exceptions;
 using XAMLApp.Models;
 using XAMLApp.ViewModels;
 
@@ -36,6 +37,11 @@ namespace XAMLApp.Views
                 string.Format("Nome: {0}\nFone: {1}\nE-mail: {2}\nVeículo: {3}\nData Agendamento: {4}\nHora Agendamento: {5}", msg.Nome, msg.Telefone, msg.Email, msg.Modelo, msg.DataAgendamento.ToString("dd/MM/yyyy"), msg.HoraAgendamento.ToString()), "Ok");
                     await Navigation.PopToRootAsync();
                 }
+            });
+
+            MessagingCenter.Subscribe<AgendamentoException>(this, "FalhaAgendamento", async (msg) =>
+            {
+                await DisplayAlert("Falha no agendamento", msg.Message, "Ok");
             });
         }
 

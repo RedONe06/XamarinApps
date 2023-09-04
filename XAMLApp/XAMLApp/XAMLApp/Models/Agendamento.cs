@@ -15,6 +15,7 @@ namespace XAMLApp.Models
         public string Email { get; set; }
         public string Modelo { get; set; }
         public decimal Preco { get; set; }
+        public bool Confirmado { get; set; }
 
         DateTime dataAgendamento = DateTime.Today;
         public DateTime DataAgendamento
@@ -37,19 +38,20 @@ namespace XAMLApp.Models
             }
         }
 
-        public Agendamento(string nome, string telefone, string email, string modelo, decimal preco, DateTime dataAgendamento, TimeSpan horaAgendamento) : this(nome, telefone, email, modelo, preco)
+        public Agendamento(string nome, string telefone, string email, string modelo, decimal preco, DateTime dataAgendamento, TimeSpan horaAgendamento, bool confirmado) : this(nome, telefone, email, modelo, preco, confirmado)
         {
             DataAgendamento = dataAgendamento;
             HoraAgendamento = horaAgendamento;
         }
 
-        public Agendamento(string nome, string telefone, string email, string modelo, decimal preco)
+        public Agendamento(string nome, string telefone, string email, string modelo, decimal preco, bool confirmado)
         {
             Nome = nome;
             Telefone = telefone;
             Email = email;
             Modelo = modelo;
             Preco = preco;
+            Confirmado = confirmado;
         }
 
         public Agendamento()

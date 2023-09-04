@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XAMLApp.Data;
+using XAMLApp.Exceptions;
 using XAMLApp.Models;
 
 namespace XAMLApp.ViewModels
@@ -59,16 +60,37 @@ namespace XAMLApp.ViewModels
                 ((Command)AgendarCommand).ChangeCanExecute();
             }
         }
+
+        public bool Confirmado
+        {
+            get => Agendamento.Confirmado; set
+            {
+                Agendamento.Confirmado = value;
+            }
+        }
+
         public DateTime DataAgendamento { get => Agendamento.DataAgendamento; set => Agendamento.DataAgendamento = value; }
         public TimeSpan HoraAgendamento { get => Agendamento.HoraAgendamento; set => Agendamento.HoraAgendamento = value; }
 
         public AgendamentoViewModel(Veiculo veiculo, Usuario usuario)
         {
-            this.Agendamento = new Agendamento(usuario.Nome, usuario.Telefone, usuario.Email, veiculo.Nome, veiculo.Preco);
+            this.Agendamento = new Agendamento(usuario.Nome, usuario.Telefone, usuario.Email, veiculo.Nome, veiculo.Preco, false);
             AgendarCommand = new Command(() =>
             {
-                SalvarAgendamento();
-                MessagingCenter.Send<Agendamento>(this.Agendamento, "Agendamento");
+                try
+                {
+                    this.Agendamento.Confirmado = true;
+                    SalvarAgendamento(this.Agendamento.Confirmado);
+                    MessagingCenter.Send<Agendamento>(this.Agendamento, "Agendamento");
+                }
+                catch (Exception ex)
+                {
+                    this.Agendamento.Confirmado = false;
+                    SalvarAgendamento(this.Agendamento.Confirmado);
+                    MessagingCenter.Send<AgendamentoException>(new AgendamentoException("Falha no agendamento, tente novamente mais tarde."), "FalhaAgendamento");
+                }
+
+
             }, () =>
             {
                 return !string.IsNullOrEmpty(this.Nome) && !string.IsNullOrEmpty(this.Telefone) && !string.IsNullOrEmpty(this.Email);
@@ -77,12 +99,12 @@ namespace XAMLApp.ViewModels
 
         public ICommand AgendarCommand { get; set; }
 
-        public void SalvarAgendamento()
+        public void SalvarAgendamento(bool confirmado)
         {
             using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
             {
                 AgendamentoDAO dao = new AgendamentoDAO(conexao);
-                dao.Salvar(new Agendamento(Nome, Telefone, Email, Modelo, Preco));
+                dao.Salvar(new Agendamento(Nome, Telefone, Email, Modelo, Preco, confirmado));
             };
         }
     }
