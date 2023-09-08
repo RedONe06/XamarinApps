@@ -38,7 +38,7 @@ O projeto agora respeita o padrão **MVVM (Model View ViewModel)** e para isso u
 # Xamarin parte 3: Crie aplicativos mobile com Visual Studio
 ## Descrição do sistema
 
-Ente as atualizações no projeto estão: tela de login com todas as propriedades e excessões da interface e um menu lateral com as informações do perfil e abas de edição. Além da estilização do projeto.
+Entre as atualizações no projeto estão: tela de login com todas as propriedades e excessões da interface e um menu lateral com as informações do perfil e abas de edição. Além da estilização do projeto.
 
 ## Sobre o curso
 
@@ -47,4 +47,20 @@ Ente as atualizações no projeto estão: tela de login com todas as propriedade
 - Habilitar e desabilitar campos por meio de Conversor
 - Utilização de conceitos como: _Converter_ e _IValueConverter_, navegação entre abas por _CurrentPage()_, tratamento de excessões por _DisplayAlert_, etc.
 
+![Projeto](https://github.com/RedONe06/XamarinApps/assets/98191980/613a9a16-8b0c-4fc1-a128-df1cc6fd96d7)
+<img src="https://img.shields.io/static/v1?label=by&message=Alura&color=blue&style=for-the-badge"> <img src="https://img.shields.io/static/v1?label=Tech&message=.NET 2.0&color=red&style=for-the-badge&logo=.NET"> <img src="https://img.shields.io/static/v1?label=Tech&message=C%23&color=red&style=for-the-badge&logo=csharp"> <img src="https://img.shields.io/static/v1?label=Tech&message=Xamarin&color=red&style=for-the-badge&logo=xamarin">
 
+# Xamarin parte 4: Crie aplicativos mobile com Visual Studio
+## Descrição do sistema
+
+Ente as atualizações no projeto estão: acesso a câmera nativa do dispositivo para registrar foto de perfil, utilização do banco de dados local para criação de banco relacional contendo todos os agendamentos registrados, implementação de página de visualização de agendamentos.
+
+## Sobre o curso
+
+- Utilização dos conceitos de Intent e Activity para acessar a câmera nativa do aparelho;
+- Conversão de formatos para a aplicação reconhecer a imagem;
+- Criação e visualização de banco de dados relacionais utilizando SQLite, ADB (Android Debug Bridge) e DB Browser;
+- Leitura de dados para projeção em página com lista de dados;
+- Conversor de cor sobre propriedades de dados.
+- Adicionando permissões no AndroidManifest e foto de aplicativo;
+- Alguns conceitos aprendidos: interfaces entre projetos (com DependencyService, [assembly: Xamarin.Forms.Dependency(typeof(MainActivity))]), PCL (Portable Class Library), utilização de DAO para manutenção de dados e entidades do banco;
