@@ -25,7 +25,25 @@ namespace XAMLApp.ViewModels
             }
         }
 
+        private Agendamento agendamentoSelecionado;
+
+        public Agendamento AgendamentoSelecionado
+        {
+            get { return agendamentoSelecionado; }
+            set {
+                if (value!=null){
+                    agendamentoSelecionado = value;
+                    MessagingCenter.Send<Agendamento>(agendamentoSelecionado, "AgendamentoSelecionado");
+                }
+            }
+        }
+
         public AgendamentosUsuarioViewModel()
+        {
+            AtualizarLista();
+        }
+
+        private void AtualizarLista()
         {
             using (var conexao = DependencyService.Get<ISQLite>().PegarConexao())
             {
@@ -38,7 +56,6 @@ namespace XAMLApp.ViewModels
                     this.Lista.Add(item);
                 }
             };
-
         }
     }
 }

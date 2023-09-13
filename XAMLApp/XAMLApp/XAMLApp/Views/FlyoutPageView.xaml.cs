@@ -43,7 +43,7 @@ namespace XAMLApp.Views
 
         private void AssinarMensagens()
         {
-            MessagingCenter.Subscribe<Usuario>(this, "MeusAgendamentos", (msg) =>
+            MessagingCenter.Subscribe<Usuario>(this, "TodosAgendamentos", (msg) =>
             {
                 this.Detail = new NavigationPage(new AgendamentosUsuarioView());
                 this.IsPresented = false;

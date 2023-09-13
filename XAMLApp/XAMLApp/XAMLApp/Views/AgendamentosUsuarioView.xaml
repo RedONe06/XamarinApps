@@ -10,7 +10,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ListView x:Name="listViewAgendamentos" Margin="15" ItemsSource="{Binding Lista}">
+        <ListView Margin="15" ItemsSource="{Binding Lista}" SelectedItem="{Binding AgendamentoSelecionado}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

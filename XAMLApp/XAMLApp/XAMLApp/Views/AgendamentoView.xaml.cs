@@ -43,12 +43,15 @@ namespace XAMLApp.Views
             {
                 await DisplayAlert("Falha no agendamento", msg.Message, "Ok");
             });
+
+            
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<Agendamento>(this, "Agendamento");
+            MessagingCenter.Unsubscribe<AgendamentoException>(this, "FalhaAgendamento");
         }
     }
 }

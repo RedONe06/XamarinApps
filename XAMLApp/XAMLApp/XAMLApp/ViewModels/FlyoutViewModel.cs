@@ -111,7 +111,7 @@ namespace XAMLApp.ViewModels
 
             MeusAgendamentosCommand = new Command(() =>
             {
-                MessagingCenter.Send<Usuario>(usuario, "MeusAgendamentos");
+                MessagingCenter.Send<Usuario>(usuario, "TodosAgendamentos");
             });
 
             NovoAgendamentoCommand = new Command(() =>
