@@ -23,6 +23,8 @@ namespace XAMLApp.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+
             AssinarMensagens();
         }
 

@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using XAMLApp.Media;
 using XAMLApp.Models;
 
 namespace XAMLApp.ViewModels
@@ -45,17 +48,42 @@ namespace XAMLApp.ViewModels
             }
         }
 
+        private ImageSource _fotoPerfil = "perfil.png";
+
+        public ImageSource FotoPerfil
+        {
+            get { return _fotoPerfil; }
+            private set
+            {
+                _fotoPerfil = value;
+                OnPropertyChanged();
+            }
+        }
+
         private readonly Usuario _usuario;
 
         public ICommand EditarPerfilCommand { get; private set; }
         public ICommand EditarCommand { get; private set; }
 
         public ICommand SalvarCommand { get; private set; }
+        public ICommand TirarFotoCommand { get; private set; }
+        public ICommand MeusAgendamentosCommand { get; private set; }
+        public ICommand NovoAgendamentoCommand { get; private set; }
+
 
         public FlyoutViewModel(Usuario usuario)
         {
             this._usuario = usuario;
             DefinirComandos(usuario);
+            AssinarMensagens();
+        }
+
+        private void AssinarMensagens()
+        {
+            MessagingCenter.Subscribe<byte[]>(this, "FotoTirada", (msg) =>
+            {
+                FotoPerfil = ImageSource.FromStream(() => new MemoryStream(msg));
+            });
         }
 
         private void DefinirComandos(Usuario usuario)
@@ -74,6 +102,21 @@ namespace XAMLApp.ViewModels
             EditarCommand = new Command(() =>
             {
                 this.Editando = true;
+            });
+
+            TirarFotoCommand = new Command(() =>
+            {
+                DependencyService.Get<ICamera>().TirarFoto();
+            });
+
+            MeusAgendamentosCommand = new Command(() =>
+            {
+                MessagingCenter.Send<Usuario>(usuario, "TodosAgendamentos");
+            });
+
+            NovoAgendamentoCommand = new Command(() =>
+            {
+                MessagingCenter.Send<Usuario>(usuario, "NovoAgendamento");
             });
         }
     }

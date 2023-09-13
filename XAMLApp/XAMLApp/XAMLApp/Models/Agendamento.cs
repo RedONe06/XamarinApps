@@ -1,15 +1,21 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace XAMLApp.Models
 {
     public class Agendamento
     {
-        public Veiculo Veiculo { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
+        public string Modelo { get; set; }
+        public decimal Preco { get; set; }
+        public bool Confirmado { get; set; }
 
         DateTime dataAgendamento = DateTime.Today;
         public DateTime DataAgendamento
@@ -24,5 +30,33 @@ namespace XAMLApp.Models
             }
         }
         public TimeSpan HoraAgendamento { get; set; }
+        public string DataFormatada
+        {
+            get
+            {
+                return DataAgendamento.Add(HoraAgendamento).ToString("dd/MM/yyyy HH:mm");
+            }
+        }
+
+        public Agendamento(string nome, string telefone, string email, string modelo, decimal preco, DateTime dataAgendamento, TimeSpan horaAgendamento, bool confirmado) : this(nome, telefone, email, modelo, preco, confirmado)
+        {
+            DataAgendamento = dataAgendamento;
+            HoraAgendamento = horaAgendamento;
+        }
+
+        public Agendamento(string nome, string telefone, string email, string modelo, decimal preco, bool confirmado)
+        {
+            Nome = nome;
+            Telefone = telefone;
+            Email = email;
+            Modelo = modelo;
+            Preco = preco;
+            Confirmado = confirmado;
+        }
+
+        public Agendamento()
+        {
+                
+        }
     }
 }
